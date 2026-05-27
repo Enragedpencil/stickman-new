@@ -17,5 +17,8 @@ zoom = Vector2(6.275, 6.275)
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000146495]
+position = Vector2(-0.5209847, -0.15629579)
 scale = Vector2(0.36, 0.36)
 shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2007044700]
