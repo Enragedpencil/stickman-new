@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://b3vihvwnuo5w0"]
 
-[ext_resource type="Texture2D" uid="uid://bksl582olpld" path="res://art/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://xf4hmod5u1r1" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://upj01gkixwac" path="res://art/Tiles/Transparent/tile_0240.png" id="2_g2els"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 8.433105
-height = 46.717285
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(33.32944, 30.633677)
 
 [node name="Player" type="CharacterBody2D" unique_id=1363546841]
 script = ExtResource("1_g2els")
@@ -14,11 +13,11 @@ script = ExtResource("1_g2els")
 zoom = Vector2(6.275, 6.275)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1947232128]
-texture = ExtResource("1_3vyb7")
+texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000146495]
-position = Vector2(-0.5209847, -0.15629579)
+position = Vector2(0.023547053, 2.484283)
 scale = Vector2(0.36, 0.36)
-shape = SubResource("CapsuleShape2D_g2els")
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2007044700]
