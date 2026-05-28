@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://b3vihvwnuo5w0"]
 
-[ext_resource type="Script" uid="uid://xf4hmod5u1r1" path="res://scenes/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://upj01gkixwac" path="res://art/Tiles/Transparent/tile_0240.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dudsgl2ws1p1n" path="res://scripts/player/player.gd" id="1_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cicvslcdmia2k" path="res://art/Tiles/Transparent/tile_0240.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dj6cychb8gyoq" path="res://scripts/shared/StateMachine.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://db2vmeqinnvyl" path="res://scripts/player/player_idle.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://c41kx6opjg40y" path="res://scripts/player/player_move.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://c7yn523cimsfe" path="res://scripts/shared/State.gd" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(33.32944, 30.633677)
 
-[node name="Player" type="CharacterBody2D" unique_id=1363546841]
-script = ExtResource("1_g2els")
+[node name="Player" type="CharacterBody2D" unique_id=1706209177]
+script = ExtResource("1_qlg0r")
+metadata/_custom_type_script = "uid://b73p7hgxsxkjn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=465105643]
 zoom = Vector2(6.275, 6.275)
@@ -21,3 +26,33 @@ scale = Vector2(0.36, 0.36)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2007044700]
+
+[node name="MovementStateMachine" type="Node" parent="." unique_id=104750692 node_paths=PackedStringArray("current_state", "parent")]
+script = ExtResource("3_qlg0r")
+current_state = NodePath("idle_state")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://dj6cychb8gyoq"
+
+[node name="idle_state" type="Node" parent="MovementStateMachine" unique_id=516104041]
+script = ExtResource("4_tuyoq")
+metadata/_custom_type_script = "uid://c7yn523cimsfe"
+
+[node name="move_state" type="Node" parent="MovementStateMachine" unique_id=1299805517]
+script = ExtResource("5_qlg0r")
+metadata/_custom_type_script = "uid://c7yn523cimsfe"
+
+[node name="JumpStateMachine" type="Node" parent="." unique_id=688630258]
+script = ExtResource("3_qlg0r")
+metadata/_custom_type_script = "uid://dj6cychb8gyoq"
+
+[node name="idle_state" type="Node" parent="JumpStateMachine" unique_id=874242491]
+script = ExtResource("6_tuyoq")
+metadata/_custom_type_script = "uid://c7yn523cimsfe"
+
+[node name="jump_state" type="Node" parent="JumpStateMachine" unique_id=1693217390]
+script = ExtResource("6_tuyoq")
+metadata/_custom_type_script = "uid://c7yn523cimsfe"
+
+[node name="falling_state" type="Node" parent="JumpStateMachine" unique_id=2032384905]
+script = ExtResource("6_tuyoq")
+metadata/_custom_type_script = "uid://c7yn523cimsfe"
