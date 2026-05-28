@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dg0e4jq4wj5kj"]
+
+[ext_resource type="Texture2D" uid="uid://cicvslcdmia2k" path="res://art/Tiles/Transparent/tile_0240.png" id="1_hj3i1"]
+[ext_resource type="Script" uid="uid://b73p7hgxsxkjn" path="res://scripts/shared/Character.gd" id="1_kxyav"]
+[ext_resource type="Script" uid="uid://dj6cychb8gyoq" path="res://scripts/shared/StateMachine.gd" id="3_5i1np"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj3i1"]
+size = Vector2(11, 10)
+
+[node name="Character" type="CharacterBody2D" unique_id=736438468 node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_kxyav")
+state_machine = NodePath("StateMachine")
+
+[node name="hurtbox" type="CollisionShape2D" parent="." unique_id=1440795268]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_hj3i1")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1683060736]
+texture = ExtResource("1_hj3i1")
+
+[node name="StateMachine" type="Node" parent="." unique_id=233717885]
+script = ExtResource("3_5i1np")
+metadata/_custom_type_script = "uid://dj6cychb8gyoq"
